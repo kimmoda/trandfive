@@ -1,0 +1,116 @@
+<div id="greeting-mainbox-1">
+  <div id="greeting-box">
+    <h1>
+      TRAND
+    </h1>
+    <h3><small>Explore Fashion's Infinite Style.</small></h3>
+    <div ng-show='!logged'>
+      <div ng-controller="userController as user">
+        <login></login>
+        <register></register>
+      </div>
+    </div>
+    <div ng-show='logged'>
+      <h5>
+        <a href="#/search" ng-click="home=false">Search Now <i class="fa fa-search" aria-hidden="true"></i> </a>
+      </h5>
+    </div>
+  </div>
+</div>
+<div id="greeting-mainbox-1-ad" class="container">
+  <div class="row text-center">
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-neimanmarcus.jpeg" alt="" />
+      </div>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-macys.jpg" alt="" />
+      </div>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-nordstrom.jpg" alt="" />
+      </div>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-bloomingdales.jpeg" alt="" />
+      </div>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-anntaylor.png" alt="" />
+      </div>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <div class="greeting-logo-box">
+        <img src="http://s3.amazonaws.com/trand-public/images/logo-jcrew.jpeg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="greeting-mainbox-2">
+  <div class="container">
+    <h1>See what's hot </h1>
+    <div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="item in home.combs track by $index" ng-init='item.thumbUrl = item.thumbUrl + "?" + home.timeNow'>
+          <div class="ideas-box" ng-click='home.linkto();' ng-mouseenter="showBrands=true" ng-mouseleave="showBrands=false">
+            <div class="brands-hoverbox" ng-show='showBrands'>
+              <span ng-repeat="obj in item.combinations">
+                {{obj.item.brandName}},
+              </span>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <img src={{item.thumbUrl}}>
+              </div>
+              <div class="col-md-6 padding-left">
+                <h3>
+                  {{item.information.title}}
+                  <small>
+                    {{item.information.author}}
+                  </small>
+                </h3>
+                <h4>
+                  {{item.price | currency}}
+                </h4>
+                <h4>
+                  <small>
+                    {{item.date | date:'yyyy-MM-dd'}}
+                  </small>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="greeting-mainbox-3" class='container hidden-xs'>
+  <div class='row'>
+    <div class='col-md-12 text-center'>
+      <h3>
+        <a ng-click='home.showRetailers();' ng-hide="home.showed">
+          see all our retailers
+        </a>
+      </h3>
+    </div>
+    <div class='col-md-12'>
+      <div class='retailers-box' ng-show="home.showed">
+        <div class="row">
+          <div class='col-sm-3' ng-repeat='retailer in home.retailers'>
+            <a href='http://{{retailer.hostDomain}}' target="_blank">
+              {{retailer.name}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

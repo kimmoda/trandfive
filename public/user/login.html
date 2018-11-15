@@ -1,0 +1,17 @@
+<form class="form" ng-submit="user.login()" ng-show='!newUser'>
+  <div class="form-group">
+    <label for="loginEmail"></label>
+    <input type="email" class="form-control" ng-model="loginEmail" name='loginEmail' placeholder='email'>
+  </div>
+  <div class="form-group">
+    <label for="loginPassword"></label>
+    <input type="password" class="form-control" ng-model="loginPassword" name='loginPassword' placeholder='password'>
+  </div>
+  <button type="submit" name="button" class='btn btn-default'>Login</button>
+  <button type="button" class='btn btn-default' ng-click='newUser = true'>New User</button>
+  <br>
+  <a type="button" class='btn btn-default' href='/fb/login'>
+    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+    Facebook login
+  </a>
+</form>
